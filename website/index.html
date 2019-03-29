@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-store, must-revalidate" />
+    <title>WebVR</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            font-family: Monospace;
+            background-color: #420000;
+            margin: 0px;
+            overflow: hidden;
+        }
+    </style>
+    <script src="wasm_exec1.12.js"></script>
+    <script src="three.min.js"></script>
+    <script src="webvr.js"></script>
+    <script src="boxlinegeometry.js"></script>
+</head>
+
+<body id="body">
+    <script>
+        console.log("load wasm")
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("app.wasm"), go.importObject).then(async (result) => {
+            await go.run(result.instance);
+            console.log("wasm exited?")
+        });
+    </script>
+    <div id="app" />
+</body>
+
+</html>

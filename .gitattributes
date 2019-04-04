@@ -1,1 +1,4 @@
 website/wasm_exec1.12.js linguist-vendored
+website/boxlinegeometry.js
+website/three.min.js
+website/webvr.js
